@@ -1,0 +1,35 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Theme.SkinHealthyAI" parent="Theme.Material3.DayNight.NoActionBar">
+        <item name="android:windowBackground">@color/white</item>
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="colorPrimary">@color/burnt_pink</item>
+        <item name="android:windowTranslucentNavigation">true</item>
+        <item name="android:statusBarColor">@android:color/transparent</item>
+        <item name="android:windowActivityTransitions">true</item>
+    </style>
+    <style name="BottomNavigationViewCustomStyle" parent="Widget.MaterialComponents.BottomNavigationView">
+        <item name="itemIconSize">24dp</item>
+        <item name="itemIconPadding">8dp</item>
+        <item name="fontFamily">@font/poppins_semibold</item>
+
+        <!-- Tambahkan shadow -->
+        <item name="android:elevation">8dp</item> <!-- Sesuaikan nilai elevation sesuai kebutuhan -->
+    </style>
+
+    <style name="ThemeCalender" parent="ThemeOverlay.MaterialComponents.MaterialCalendar">
+        <item name="android:windowFullscreen">false</item>
+    </style>
+
+    <style name="RoundedImageView" parent="ShapeAppearance.MaterialComponents.SmallComponent">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">6dp</item> <!-- Ubah sesuai keinginan -->
+    </style>
+
+    <style name="RoundedImageProfileView" parent="ShapeAppearance.MaterialComponents.SmallComponent">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">33dp</item> <!-- Ubah sesuai keinginan -->
+    </style>
+
+
+</resources>

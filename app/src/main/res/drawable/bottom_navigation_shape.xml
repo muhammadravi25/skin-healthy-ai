@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- Bayangan -->
+    <item android:bottom="6dp" android:right="6dp">
+        <shape android:shape="rectangle">
+            <solid android:color="#50000000"/> <!-- Warna bayangan (transparan hitam) -->
+            <corners android:topLeftRadius="45dp" android:topRightRadius="45dp"/>
+        </shape>
+    </item>
+
+    <!-- Card dengan warna putih -->
+    <item>
+        <shape android:shape="rectangle">
+            <solid android:color="@color/white"/>
+            <corners android:topLeftRadius="45dp" android:topRightRadius="45dp"/>
+        </shape>
+    </item>
+
+</layer-list>

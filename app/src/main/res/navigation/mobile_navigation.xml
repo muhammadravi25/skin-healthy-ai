@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/navigation_home">
+
+    <fragment
+        android:id="@+id/navigation_home"
+        android:name="com.ravi.skinhealthyai.ui.home.HomeFragment"
+        android:label="@string/title_home"
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_navigation_home_to_navigation_detail_history"
+            app:destination="@id/navigation_detail_history"
+            app:enterAnim="@android:anim/slide_in_left" />
+        <action
+            android:id="@+id/action_homeFragment_to_historyFragment"
+            app:destination="@id/navigation_history"/>
+    </fragment>
+
+    <fragment
+        android:id="@+id/navigation_scan"
+        android:name="com.ravi.skinhealthyai.ui.scan.ScanFragment"
+        android:label="@string/title_scan"
+        tools:layout="@layout/fragment_scan" >
+        <action
+            android:id="@+id/action_navigation_scan_to_navigation_result_scan"
+            app:destination="@id/navigation_result_scan"
+            app:enterAnim="@android:anim/slide_in_left" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/navigation_history"
+        android:name="com.ravi.skinhealthyai.ui.history.HistoryFragment"
+        android:label="@string/title_history"
+        tools:layout="@layout/fragment_history" >
+        <action
+            android:id="@+id/action_navigation_history_to_navigation_detail_history"
+            app:destination="@id/navigation_detail_history" />
+    </fragment>
+    <fragment
+        android:id="@+id/navigation_result_scan"
+        android:name="com.ravi.skinhealthyai.ui.scan.ResultScanFragment"
+        android:label="@string/title_result_scan"
+        tools:layout="@layout/fragment_result_scan">
+        <argument
+            android:name="skinDisease"
+            app:argType="string" />
+        <argument
+            android:name="imageScan"
+            app:argType="string" />
+        <argument
+            android:name="accuracySkinDisease"
+            app:argType="float" />
+        <action
+            android:id="@+id/action_resultScanFragment_to_historyFragment"
+            app:destination="@id/navigation_history"
+            app:enterAnim="@android:anim/fade_in" />
+    </fragment>
+    <fragment
+        android:id="@+id/navigation_detail_history"
+        android:name="com.ravi.skinhealthyai.ui.history.DetailHistoryFragment"
+        android:label="@string/title_detail_history"
+        tools:layout="@layout/fragment_detail_history">
+        <argument
+            android:name="historyId"
+            app:argType="integer" />
+    </fragment>
+</navigation>

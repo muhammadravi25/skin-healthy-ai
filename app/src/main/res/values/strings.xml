@@ -1,0 +1,35 @@
+<resources>
+    <string name="app_name">Skin Healthy AI</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
+    <string name="title_scan">Scan</string>
+    <string name="title_history">Riwayat</string>
+    <string name="title_result_scan">Hasil Scan</string>
+    <string name="title_detail_history">Detail Riwayat</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title_carousel_example">Lorem ipsum dolor</string>
+    <string name="present_user">Hallo, Pengguna</string>
+    <string name="desc_user">Diagnosis kulit dalam hitungan detik!</string>
+    <string name="title_scan_image">Bagian Kulit</string>
+    <string name="title_upload_image">Unggah Foto</string>
+    <string name="desc_scan_image">Silakan pilih foto yang ingin Anda scan untuk mengetahui kondisi kulit Anda saat ini.</string>
+    <string name="description_icon">Ikon Tata letak foto</string>
+    <string name="img_scan">Tata letak foto</string>
+    <string name="from_gallery_button">Dari Galeri</string>
+    <string name="camera_button">Kamera</string>
+    <string name="scan_button">Scan Sekarang</string>
+    <string name="no_media_selected">Tidak ada media yang dipilih</string>
+    <string name="title_disease_example">Melanoma</string>
+    <string name="desc_disease_example">23 Desember 2024</string>
+    <string name="diagnosis">Diagnosis</string>
+    <string name="accuracy">Akurasi %s</string>
+    <string name="history_button">Lihat Semua Riwayat Scan</string>
+    <string name="image_scan_history">Riwayat Foto Scan Kulit</string>
+    <string name="list_title_history">Semua</string>
+    <string name="calender_menu">Kalender</string>
+    <string name="history_not_found">Riwayat tidak ditemukan.</string>
+    <string name="result_image_scan">Foto Scan Penyakit kulit</string>
+    <string name="icon_skin_disease">Ikon Hasil Penyakit Kulit</string>
+    <string name="title_last_history">Riwayat Scan Terakhir</string>
+</resources>
