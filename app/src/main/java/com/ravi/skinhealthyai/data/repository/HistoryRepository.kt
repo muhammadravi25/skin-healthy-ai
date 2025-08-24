@@ -6,6 +6,7 @@ import androidx.paging.PagedList
 import com.ravi.skinhealthyai.data.database.HistoryDao
 import com.ravi.skinhealthyai.data.database.QueryHelper
 import com.ravi.skinhealthyai.data.model.History
+import com.ravi.skinhealthyai.utils.ImageHelper
 
 class HistoryRepository(private val historyDao: HistoryDao) {
     fun getAllHistory(start: Long?, end: Long?): LiveData<PagedList<History>> {
@@ -21,7 +22,7 @@ class HistoryRepository(private val historyDao: HistoryDao) {
         return LivePagedListBuilder(history, config).build()
     }
 
-    suspend fun getHistoryById(id: Int): History? {
+    suspend fun getHistoryById(id: Int): History {
         return historyDao.getHistoryId(id)
     }
 
@@ -31,5 +32,20 @@ class HistoryRepository(private val historyDao: HistoryDao) {
 
     suspend fun insertHistory(history: History) {
         historyDao.insertHistory(history)
+
+        val count = historyDao.getHistoryCount()
+        val maxLimit = 300
+
+        if (count > maxLimit) {
+            val deleteCount = count - maxLimit
+
+            val oldPhotos = historyDao.getOldHistoryPhotos(deleteCount)
+
+            historyDao.deleteOldHistory(deleteCount)
+
+            oldPhotos.forEach { path ->
+                ImageHelper.deleteImageFromInternalStorage(path)
+            }
+        }
     }
 }

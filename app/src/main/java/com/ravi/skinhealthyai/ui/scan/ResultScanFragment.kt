@@ -1,10 +1,13 @@
 package com.ravi.skinhealthyai.ui.scan
 
+import android.net.Uri
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.net.toUri
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.bumptech.glide.Glide
@@ -15,9 +18,11 @@ import com.ravi.skinhealthyai.R
 import com.ravi.skinhealthyai.data.model.History
 import com.ravi.skinhealthyai.databinding.FragmentResultScanBinding
 import com.ravi.skinhealthyai.ui.ViewModelFactory
-import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import androidx.lifecycle.lifecycleScope
+import com.ravi.skinhealthyai.utils.ImageHelper
+import java.io.File
 
 class ResultScanFragment : Fragment() {
     private var _binding: FragmentResultScanBinding? = null
@@ -61,10 +66,11 @@ class ResultScanFragment : Fragment() {
 
     private fun setData(isResume: Boolean = false) {
         val skinDisease = ResultScanFragmentArgs.fromBundle(requireArguments()).skinDisease
-        val image = ResultScanFragmentArgs.fromBundle(requireArguments()).imageScan
+        val image = ResultScanFragmentArgs.fromBundle(requireArguments()).imageScan.toUri()
         val accuracySkinDisease = ResultScanFragmentArgs.fromBundle(requireArguments()).accuracySkinDisease
         val convertToPercent = (accuracySkinDisease * 100).toInt().toString()
         val cornerRadius = 20
+        Log.d("data kirm", image.toString())
         binding.apply {
             nameDiseaseScan.text = skinDisease
             accuracyDiseaseScan.text = resources.getString(R.string.accuracy, "$convertToPercent%")
@@ -73,20 +79,24 @@ class ResultScanFragment : Fragment() {
                 .apply(RequestOptions.bitmapTransform(RoundedCorners(cornerRadius)))
                 .into(imageResultScan)
         }
-        if (!isResume) {
-            saveSkinDisease(skinDisease, image, accuracySkinDisease)
-        }
+        if (!isResume) saveSkinDisease(skinDisease, image, accuracySkinDisease)
     }
 
-    private fun saveSkinDisease(skinDisease: String, image: String, accuracy: Float) {
-        val currentTime = System.currentTimeMillis()
-        val newHistory = History(
-            nameSkinDisease = skinDisease,
-            photo = image,
-            accuracy = accuracy,
-            createdAt = currentTime
-        )
-        CoroutineScope(Dispatchers.IO).launch {
+    private fun saveSkinDisease(skinDisease: String, imageUri: Uri?, accuracy: Float) {
+        if (imageUri == null) return
+
+        viewLifecycleOwner.lifecycleScope.launch(Dispatchers.IO) {
+            val imagePath =
+                ImageHelper.copyAndCompressImageFromUri(requireContext(), imageUri, quality = 80)
+                    ?: return@launch
+
+            val newHistory = History(
+                nameSkinDisease = skinDisease,
+                photo = imagePath,
+                accuracy = accuracy,
+                createdAt = System.currentTimeMillis()
+            )
+
             viewModelResultScan.insertData(newHistory)
         }
     }

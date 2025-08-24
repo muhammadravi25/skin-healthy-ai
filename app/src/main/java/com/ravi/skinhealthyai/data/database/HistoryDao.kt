@@ -21,6 +21,15 @@ interface HistoryDao {
     @Query("SELECT * FROM history ORDER BY createdAt DESC LIMIT 3")
     fun getLastThreeHistory(): LiveData<List<History>>
 
+    @Query("SELECT COUNT(*) FROM history")
+    suspend fun getHistoryCount(): Int
+
     @Query("SELECT * FROM History WHERE id = :id")
     suspend fun getHistoryId(id: Int): History
+
+    @Query("DELETE FROM history WHERE id IN (SELECT id FROM history ORDER BY createdAt ASC LIMIT :limit)")
+    suspend fun deleteOldHistory(limit: Int)
+
+    @Query("SELECT photo FROM history ORDER BY createdAt ASC LIMIT :limit")
+    suspend fun getOldHistoryPhotos(limit: Int): List<String>
 }

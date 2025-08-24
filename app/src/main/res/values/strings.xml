@@ -32,4 +32,5 @@
     <string name="result_image_scan">Foto Scan Penyakit kulit</string>
     <string name="icon_skin_disease">Ikon Hasil Penyakit Kulit</string>
     <string name="title_last_history">Riwayat Scan Terakhir</string>
+    <string name="progress">Silahkan Tunggu...</string>
 </resources>

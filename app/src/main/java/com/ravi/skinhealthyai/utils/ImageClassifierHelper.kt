@@ -12,11 +12,9 @@ import org.tensorflow.lite.task.vision.classifier.ImageClassifier
 import java.io.IOException
 
 class ImageClassifierHelper(
-    val modelName: String = "skin_diseases_model.tflite",
-    val context: Context,
-    val classifierListener: ClassifierListener?
+    private val context: Context,
+    private val modelName: String = "model_with_metadata.tflite"
 ) {
-
     private var imageClassifier: ImageClassifier? = null
 
     init {
@@ -24,34 +22,27 @@ class ImageClassifierHelper(
     }
 
     private fun setupImageClassifier() {
-        try {
-            imageClassifier = ImageClassifier.createFromFile(context, modelName)
+        imageClassifier = try {
+            ImageClassifier.createFromFile(context, modelName)
         } catch (e: IOException) {
-            classifierListener?.onError("Failed to create ImageClassifier: ${e.message}")
+            null
         }
     }
 
-    fun classifyStaticImage(imageUri: Uri) {
-        val bitmap = getBitmapFromUri(imageUri)
+    fun classifyStaticImage(imageUri: Uri): List<Classifications>? {
+        val bitmap = getBitmapFromUri(imageUri) ?: return null
 
-        bitmap?.let { bitmap ->
-            try {
-                // Memproses gambar menggunakan ImageClassifier
-                val startTime = System.currentTimeMillis()
-                val classifications = imageClassifier?.classify(TensorImage.fromBitmap(bitmap))
-
-                // Memeriksa hasil klasifikasi
-                if (classifications != null && classifications.isNotEmpty()) {
-                    classifierListener?.onResults(classifications)
-                } else {
-                    classifierListener?.onError("No results found.")
-                }
-            } catch (e: Exception) {
-                classifierListener?.onError("Error during classification: ${e.message}")
-            }
-        } ?: classifierListener?.onError("Error loading bitmap from Uri.")
+        return try {
+            imageClassifier?.classify(TensorImage.fromBitmap(bitmap))
+        } catch (e: Exception) {
+            null
+        }
     }
 
+    fun closeClassifier() {
+        imageClassifier?.close()
+        imageClassifier = null
+    }
 
     @Suppress("DEPRECATION")
     private fun getBitmapFromUri(uri: Uri): Bitmap? {
@@ -63,15 +54,8 @@ class ImageClassifierHelper(
                 MediaStore.Images.Media.getBitmap(context.contentResolver, uri)
             }?.copy(Bitmap.Config.ARGB_8888, true)
         } catch (e: IOException) {
-            classifierListener?.onError("Error loading bitmap from Uri: ${e.message}")
             null
         }
     }
-
-    interface ClassifierListener {
-        fun onError(error: String)
-        fun onResults(
-            results: List<Classifications>?
-        )
-    }
 }
+

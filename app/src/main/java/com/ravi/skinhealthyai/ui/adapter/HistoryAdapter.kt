@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import com.bumptech.glide.request.RequestOptions
+import com.ravi.skinhealthyai.R
 import com.ravi.skinhealthyai.data.model.History
 import com.ravi.skinhealthyai.databinding.ItemHistoryBinding
 import com.ravi.skinhealthyai.utils.formatDate
@@ -21,8 +22,10 @@ class HistoryAdapter(private val onItemClickCallback: OnItemClickCallback) :
     }
 
     override fun onBindViewHolder(holder: WordViewHolder, position: Int) {
-        val history = getItem(position) as History
-        holder.bind(history)
+        val history = getItem(position)
+        if (history != null) {
+            holder.bind(history)
+        }
     }
 
     class WordViewHolder(private val binding: ItemHistoryBinding,  private val onItemClickCallback: OnItemClickCallback) :
@@ -32,7 +35,10 @@ class HistoryAdapter(private val onItemClickCallback: OnItemClickCallback) :
             binding.dateDisease.text = formatDate(data.createdAt)
             Glide.with(binding.root.context)
                 .load(data.photo)
-                .apply(RequestOptions.bitmapTransform(RoundedCorners(12)))
+                .apply(
+                    RequestOptions.bitmapTransform(RoundedCorners(12))
+                        .error(R.drawable.image_warning)
+                )
                 .into(binding.imgCard)
             binding.root.setOnClickListener {
                 onItemClickCallback.onItemClicked(data)

@@ -84,7 +84,10 @@ class DetailHistoryFragment : Fragment() {
             accuracyDiseaseScan.text = resources.getString(R.string.accuracy, "$convertToPercent%")
             Glide.with(requireActivity())
                 .load(data.photo)
-                .apply(RequestOptions.bitmapTransform(RoundedCorners(cornerRadius)))
+                .apply(
+                    RequestOptions.bitmapTransform(RoundedCorners(cornerRadius))
+                        .error(R.drawable.image_warning)
+                )
                 .into(imageResultScan)
         }
     }

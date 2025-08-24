@@ -13,7 +13,7 @@
         <action
             android:id="@+id/action_navigation_home_to_navigation_detail_history"
             app:destination="@id/navigation_detail_history"
-            app:enterAnim="@android:anim/slide_in_left" />
+            app:enterAnim="@android:anim/fade_in" />
         <action
             android:id="@+id/action_homeFragment_to_historyFragment"
             app:destination="@id/navigation_history"/>
