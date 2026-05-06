@@ -56,13 +56,13 @@ Solusi:
 User Input → Preprocessing → Tensor → Model CNN → Result → Save DB
 📸 App Screenshots
 🏠 Home & Splash
-<p align="center"> <img src="app/src/main/res/drawable/splash-screen.png" width="220"/> <img src="app/src/main/res/drawable/home-screen.png" width="220"/> </p> <p align="center"><i>Splash screen dan halaman utama aplikasi</i></p>
+<div align="center"> <img src="app/src/main/res/drawable/splash-screen.png" width="220"/> <img src="app/src/main/res/drawable/home-screen.png" width="220"/> </p> <p align="center"><i>Splash screen dan halaman utama aplikasi</i></div>
 🔍 Scan Process
-<p align="center"> <img src="app/src/main/res/drawable/scan-screen.png" width="200"/> <img src="app/src/main/res/drawable/pick-from-camera-x.png" width="200"/> <img src="app/src/main/res/drawable/pick-from-gallery.png" width="200"/> </p> <p align="center"><i>Proses scan menggunakan kamera dan galeri</i></p>
+<div align="center"> <img src="app/src/main/res/drawable/scan-screen.png" width="200"/> <img src="app/src/main/res/drawable/pick-from-camera-x.png" width="200"/> <img src="app/src/main/res/drawable/pick-from-gallery.png" width="200"/> </p> <p align="center"><i>Proses scan menggunakan kamera dan galeri</i></div>
 🖼️ Image Processing
-<p align="center"> <img src="app/src/main/res/drawable/after-pick-capture-scan-screen.png" width="220"/> </p> <p align="center"><i>Pengolahan gambar sebelum diproses oleh AI</i></p>
+<div align="center"> <img src="app/src/main/res/drawable/after-pick-capture-scan-screen.png" width="220"/> </p> <p align="center"><i>Pengolahan gambar sebelum diproses oleh AI</i></div>
 📊 Result & History
-<p align="center"> <img src="app/src/main/res/drawable/result-screen.png" width="200"/> <img src="app/src/main/res/drawable/history-screen.png" width="200"/> <img src="app/src/main/res/drawable/filter-by-datetime-history-screen.png" width="200"/> </p> <p align="center"><i>Hasil deteksi dan fitur riwayat</i></p>
+<div align="center"> <img src="app/src/main/res/drawable/result-screen.png" width="200"/> <img src="app/src/main/res/drawable/history-screen.png" width="200"/> <img src="app/src/main/res/drawable/filter-by-datetime-history-screen.png" width="200"/> </p> <p align="center"><i>Hasil deteksi dan fitur riwayat</i></div>
 📊 Engineering Highlights
 ⚡ On-device ML (TensorFlow Lite)
 🔐 Privacy-first architecture
