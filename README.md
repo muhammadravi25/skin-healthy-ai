@@ -52,7 +52,6 @@ Solusi:
 ---
 
 ## ⚙️ System Flow
-```text
 User Input → Preprocessing → Tensor → Model CNN → Result → Save DB
 📸 App Screenshots
 🏠 Home & Splash
