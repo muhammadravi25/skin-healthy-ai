@@ -62,6 +62,7 @@ User Input → Preprocessing → Tensor → Model CNN → Result → Save DB
 <div align="center"> <img src="app/src/main/res/drawable/after-pick-capture-scan-screen.png" width="220"/> </p> <p align="center"><i>Pengolahan gambar sebelum diproses oleh AI</i></div>
 📊 Result & History
 <div align="center"> <img src="app/src/main/res/drawable/result-screen.png" width="200"/> <img src="app/src/main/res/drawable/history-screen.png" width="200"/> <img src="app/src/main/res/drawable/filter-by-datetime-history-screen.png" width="200"/> </p> <p align="center"><i>Hasil deteksi dan fitur riwayat</i></div>
+
 - 📊 Engineering Highlights
 - ⚡ On-device ML (TensorFlow Lite)
 - 🔐 Privacy-first architecture
@@ -70,9 +71,17 @@ User Input → Preprocessing → Tensor → Model CNN → Result → Save DB
 - 📱 Support Android 8+
 
 ⚠️ Disclaimer
+
 Aplikasi ini hanya untuk deteksi awal, bukan diagnosis medis profesional.
 
 👨‍💻 Author
 
 Muhammad Ravi
+
 Software Developer | Machine Learning Enthusiast
+
+## 📱Lainnya 
+
+🤖 Model Deep Learning
+
+- **Github**: https://github.com/muhammadravi25/image-classification-of-skin-diseases
